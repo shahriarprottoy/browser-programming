@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App — Protya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Top Nav -->
+  <nav class="top-nav" aria-label="Site navigation">
+    <a href="index.html" class="nav-link">← Portfolio</a>
+    <a href="weather.html" class="nav-link nav-link--active">
+      <span>☁</span> Weather App
+    </a>
+  </nav>
+
+  <!-- Theme Toggle -->
+  <button id="theme-toggle" aria-label="Toggle dark/light theme">
+    <span class="toggle-icon">◐</span>
+    <span class="toggle-label">Toggle Theme</span>
+  </button>
+
+  <!-- Header -->
+  <header class="weather-header">
+    <div class="header-inner">
+      <div class="header-label">Weather App</div>
+      <h1>Live<br><em>Weather</em></h1>
+      <p class="tagline">Real-time conditions fetched from the Open-Meteo API using <code>fetch()</code> and <code>async/await</code>.</p>
+    </div>
+    <div class="header-deco" aria-hidden="true">
+      <span>☁</span><span>⛅</span><span>🌤</span>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main id="main">
+
+    <section class="section section-weather">
+      <div class="section-tag">01 — Select a City</div>
+      <h2>Choose a City</h2>
+      <p class="weather-intro">Click a city button to load the current weather conditions.</p>
+
+      <!-- City buttons -->
+      <div class="city-buttons" role="group" aria-label="City selection">
+        <button class="city-btn" id="btnKuopio"    data-city="Kuopio"    data-lat="62.8924" data-lon="27.6770">Kuopio</button>
+        <button class="city-btn" id="btnHelsinki"  data-city="Helsinki"  data-lat="60.1699" data-lon="24.9384">Helsinki</button>
+        <button class="city-btn" id="btnTampere"   data-city="Tampere"   data-lat="61.4978" data-lon="23.7610">Tampere</button>
+        <button class="city-btn" id="btnDhaka"     data-city="Dhaka"     data-lat="23.8103" data-lon="90.4125">Dhaka</button>
+        <button class="city-btn" id="btnLondon"    data-city="London"    data-lat="51.5074" data-lon="-0.1278">London</button>
+        <button class="city-btn" id="btnTokyo"     data-city="Tokyo"     data-lat="35.6762" data-lon="139.6503">Tokyo</button>
+      </div>
+    </section>
+
+    <!-- Weather result section -->
+    <section class="section section-weather-result" id="weatherSection" aria-live="polite">
+      <div class="section-tag">02 — Current Conditions</div>
+
+      <!-- Shown while loading or if nothing fetched yet -->
+      <div id="weatherPlaceholder" class="weather-placeholder">
+        <span class="placeholder-icon">⛅</span>
+        <p>Select a city above to load weather data.</p>
+      </div>
+
+      <!-- Populated by weather.js -->
+      <div id="weatherBox" class="weather-box" hidden>
+        <div class="weather-city-name">
+          <span id="city">—</span>
+          <span class="weather-live-badge">LIVE</span>
+        </div>
+
+        <div class="weather-metrics">
+          <div class="weather-metric weather-metric--temp">
+            <span class="metric-icon">🌡</span>
+            <span class="metric-value" id="temperature">—</span>
+            <span class="metric-label">Temperature</span>
+          </div>
+          <div class="weather-metric">
+            <span class="metric-icon">💨</span>
+            <span class="metric-value" id="wind">—</span>
+            <span class="metric-label">Wind Speed</span>
+          </div>
+          <div class="weather-metric">
+            <span class="metric-icon">📍</span>
+            <span class="metric-value" id="coords">—</span>
+            <span class="metric-label">Coordinates</span>
+          </div>
+        </div>
+
+        <p class="weather-updated" id="weatherUpdated"></p>
+      </div>
+
+      <!-- Error message (shown on fetch failure) -->
+      <div id="weatherError" class="api-error" hidden>
+        Error loading data. Please try again.
+      </div>
+
+      <!-- Debug log -->
+      <details class="weather-log-details">
+        <summary>Console log</summary>
+        <pre id="output" class="weather-log"></pre>
+      </details>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <p class="api-source">
+        Weather data: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo API</a> — free, no API key required.
+      </p>
+      <p class="last-updated" id="last-updated"></p>
+    </div>
+  </footer>
+
+  <!-- Theme script (shared) -->
+  <script src="js/script.js"></script>
+  <!-- Weather-specific script -->
+  <script src="js/weather.js"></script>
+</body>
+</html>
