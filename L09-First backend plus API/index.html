@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Backend Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      color: #333;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 8px 4px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .card p {
+      margin: 6px 0;
+      font-size: 15px;
+      color: #444;
+    }
+    .card span {
+      font-weight: bold;
+      color: #222;
+    }
+    #loading {
+      color: #888;
+      font-style: italic;
+      display: none;
+      margin-top: 10px;
+    }
+    #error {
+      color: red;
+      display: none;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Backend API Test</h1>
+
+  <!-- Task 1 & 2 & Bonus -->
+  <button onclick="getMessage()">Get Message</button>
+
+  <!-- Task 3 -->
+  <button onclick="getStudent()" style="background-color:#2196F3;">Get Student</button>
+
+  <!-- Bonus: loading text -->
+  <p id="loading">⏳ Loading...</p>
+
+  <!-- Bonus: error message -->
+  <p id="error">❌ Could not connect to the server. Make sure it is running.</p>
+
+  <!-- Task 1 & 2 output -->
+  <div class="card" id="message-card" style="display:none;">
+    <p>📢 Message: <span id="output"></span></p>
+    <p>📚 Course: <span id="course"></span></p>
+    <p>📅 Year: <span id="year"></span></p>
+    <!-- Bonus: formatted time -->
+    <p>🕐 Time: <span id="time"></span></p>
+  </div>
+
+  <!-- Task 3 output -->
+  <div class="card" id="student-card" style="display:none;">
+    <p>👤 Name: <span id="student-name"></span></p>
+    <p>🎓 Role: <span id="student-role"></span></p>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
